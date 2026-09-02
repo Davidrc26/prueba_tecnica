@@ -9,15 +9,14 @@ namespace dominio.entidades
 {
     public class LoteInspeccion
     {
-        private Guid _id;
-        public Guid Id { get { return _id; } }
+        public Guid Id { get; set; }
 
         public EstadoLote Estado { get; set; }
 
         public List<Muestreo> Muestreos { get; set; }
         public LoteInspeccion() 
         { 
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             Estado = EstadoLote.Pendiente;
             Muestreos = new List<Muestreo>();
         }

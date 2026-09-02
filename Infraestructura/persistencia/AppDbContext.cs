@@ -27,7 +27,14 @@ namespace Infraestructura.persistencia
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Estado).IsRequired();
-
+                entity.HasOne(e => e.MateriaPrima)
+                      .WithMany(mp => mp.Recibos)
+                      .HasForeignKey(e => e.MateriaPrimaId)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.LoteInspeccion)
+                      .WithMany()
+                      .HasForeignKey(e => e.LoteInspeccionId)
+                      .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

@@ -6,12 +6,12 @@ namespace dominio.entidades
 {
     public class Muestreo
     {
-        private Guid _id;
-        public Guid Id { get { return _id; } }
-        public string descripcion { get; set; } = string.Empty;
+        public Guid Id { get; set; }
+       
+        public string Descripcion { get; set; } = string.Empty;
         public Muestreo()
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
     }
 }

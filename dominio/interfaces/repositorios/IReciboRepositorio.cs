@@ -1,4 +1,4 @@
-﻿using dominio.dtos;
+﻿using dominio.entidades;
 using dominio.enums;
 using System;
 using System.Collections.Generic;
@@ -9,10 +9,9 @@ namespace dominio.interfaces.repositorios
 {
     public interface IReciboRepositorio
     {
-        public Task<ReciboDto> IngresarRecibo(ReciboDto recibo);
-        public Task<ReciboDto> ObtenerRecibo(Guid id);
-        public Task<ReciboDto> AgregarLote(Guid id, LoteInspeccionDto lote);
-        public Task<List<ReciboDto>> ObtenerRecibos();
+        public Task<Recibo> IngresarRecibo(Recibo recibo);
+        public Task<Recibo> ObtenerDetalleRecibo(Guid id);
+        public Task<List<Recibo>> ObtenerRecibos();
         public Task CambiarEstado(EstadoRecibo estado, Guid id);
 
     }

@@ -1,7 +1,6 @@
-﻿using dominio.dtos;
+﻿
 using dominio.enums;
 using dominio.interfaces.repositorios;
-using dominio.modelos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,27 +9,24 @@ namespace dominio.entidades
 {
     public class Recibo
     {
-        private readonly IReciboRepositorio _reciboRepositorio;
-        private Guid _id;
+        public Guid Id { get; set; }
         public EstadoRecibo Estado { get; set; }
-        public Guid Id { get { return _id; } }
 
         public LoteInspeccion? Lote { get; set; }
 
         public MateriaPrima Suministros { get; set; }
 
-        public Recibo(MateriaPrima suministros, IReciboRepositorio reciboRepositorio)
+        public Recibo(MateriaPrima suministros)
         {
-            _id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             Suministros = suministros;
-            _reciboRepositorio = reciboRepositorio;
         }
         
 
-        public void AgregarLote(LoteInspeccionDto lote)
+        public void AgregarLote(LoteInspeccion lote)
         {
             if (Lote is not null) throw new InvalidOperationException("Ya se ha agregado un lote a este recibo.");
-            Lote = new LoteInspeccion();
+            Lote = lote;
         }
 
 
